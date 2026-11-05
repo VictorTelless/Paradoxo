@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PARADOXO | Fuga do Laboratório</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<main class="game-container">
+
+    <!-- CABEÇALHO -->
+    <header class="game-header">
+
+        <div class="logo">
+            <span class="logo-icon">P</span>
+
+            <div>
+                <h1>PARADOXO</h1>
+                <p>PROTOCOLO DE FUGA</p>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-indicator"></span>
+            SISTEMA ATIVO
+        </div>
+
+    </header>
+
+
+    <!-- MENU INICIAL -->
+    <section id="menu" class="screen active">
+
+        <div class="intro">
+
+            <span class="eyebrow">
+                SISTEMA DE SEGURANÇA // 001
+            </span>
+
+            <h2>
+                A lógica é sua única
+                <span>saída.</span>
+            </h2>
+
+            <p>
+                Você está preso em um laboratório controlado
+                por uma inteligência artificial. Investigue
+                ambientes, resolva enigmas e use a lógica
+                proposicional para escapar.
+            </p>
+
+            <button id="start-button" class="primary-button">
+                INICIAR PROTOCOLO <span>→</span>
+            </button>
+
+            <p class="warning">
+                AVISO: NENHUMA DECISÃO É LIVRE DE CONSEQUÊNCIAS.
+            </p>
+
+        </div>
+
+        <div class="lab-visual" aria-hidden="true">
+
+            <div class="visual-grid"></div>
+
+            <div class="reactor">
+                <div class="reactor-ring ring-outer"></div>
+                <div class="reactor-ring ring-inner"></div>
+                <div class="reactor-core"></div>
+            </div>
+
+            <div class="visual-label label-top">
+                <span>SYS.STATUS</span>
+                <strong>UNSTABLE</strong>
+            </div>
+
+            <div class="visual-label label-bottom">
+                <span>ESCAPE PROTOCOL</span>
+                <strong>LOCKED</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- JOGO -->
+    <section id="game-screen" class="screen game-screen">
+
+        <!-- SALA 01 -->
+        <div id="sala-01">
+
+            <div class="room-header">
+
+                <div>
+                    <span class="eyebrow">
+                        SETOR 01 // INSTALAÇÃO SUBTERRÂNEA
+                    </span>
+
+                    <h2>Laboratório <span>01</span></h2>
+                </div>
+
+                <div class="objective">
+                    <span>OBJETIVO ATUAL</span>
+                    <strong>Encontrar uma saída</strong>
+                </div>
+
+            </div>
+
+
+            <!-- CENÁRIO DA SALA 01 -->
+            <div class="room">
+
+                <div class="room-lights"></div>
+
+                <button
+                    id="terminal"
+                    class="room-object terminal"
+                    aria-label="Investigar terminal"
+                >
+                    <span class="object-icon">▤</span>
+                    <span>TERMINAL</span>
+                    <small>INVESTIGAR</small>
+                </button>
+
+                <button
+                    id="cabinet"
+                    class="room-object cabinet"
+                    aria-label="Investigar armário"
+                >
+                    <span class="object-icon">▥</span>
+                    <span>ARMÁRIO</span>
+                    <small>INVESTIGAR</small>
+                </button>
+
+                <button
+                    id="door"
+                    class="door"
+                    aria-label="Verificar porta de saída"
+                >
+                    <span class="door-light"></span>
+                    <span class="door-label">SAÍDA</span>
+                    <span class="door-lock">🔒</span>
+                    <span id="door-status">BLOQUEADA</span>
+                </button>
+
+                <div class="room-floor"></div>
+
+                <!-- PERSONAGEM CONTROLÁVEL -->
+                <div id="player" class="player" role="img" aria-label="Personagem do jogador">
+                    <span class="player-shadow"></span>
+                    <span class="player-body">V</span>
+                    <span class="player-indicator"></span>
+                </div>
+
+                <div id="interaction-prompt" class="interaction-prompt" aria-live="polite">
+                    Use WASD ou as setas para se mover
+                </div>
+
+            </div>
+
+
+            <!-- INVENTÁRIO -->
+            <div class="inventory">
+
+                <div>
+                    <span class="eyebrow">INVENTÁRIO</span>
+                    <h3>Itens encontrados</h3>
+                </div>
+
+                <div id="inventory-items" class="inventory-items">
+                    <span class="empty-inventory">
+                        Nenhum item encontrado.
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- MENSAGENS -->
+            <div class="message-panel">
+
+                <span class="message-icon">i</span>
+
+                <div>
+                    <strong id="message-title">SISTEMA</strong>
+
+                    <p id="message">
+                        Você despertou em um laboratório desconhecido.
+                        Investigue os objetos para encontrar uma saída.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SALA 02 -->
+        <section id="sala-02" hidden>
+
+            <div class="room-header">
+
+                <div>
+                    <span class="eyebrow">
+                        SETOR 02 // AUTENTICAÇÃO LÓGICA
+                    </span>
+
+                    <h2>Terminal <span>de Tautologia</span></h2>
+                </div>
+
+                <div class="objective">
+                    <span>OBJETIVO ATUAL</span>
+                    <strong>Descobrir a senha</strong>
+                </div>
+
+            </div>
+            <!-- CENÁRIO DA SALA 02 -->
+            <div class="room room-02">
+
+                <div class="room-lights"></div>
+
+                <!-- SERVIDOR ESQUERDO -->
+                <div class="server-rack server-left">
+                    <span class="server-light"></span>
+                    <span class="server-light"></span>
+                    <span class="server-light"></span>
+                    <span class="server-screen"></span>
+                    <small>SERVER 01</small>
+                </div>
+
+                <!-- SERVIDOR DIREITO -->
+                <div class="server-rack server-right">
+                    <span class="server-light"></span>
+                    <span class="server-light"></span>
+                    <span class="server-light"></span>
+                    <span class="server-screen"></span>
+                    <small>SERVER 02</small>
+                </div>
+
+                <!-- TERMINAL CENTRAL -->
+                <div class="central-console">
+                    <div class="console-screen">
+                        <span>LOGIC SYSTEM</span>
+                        <strong>P ∨ ¬P</strong>
+                        <small>AWAITING INPUT...</small>
+                    </div>
+
+                    <div class="console-base"></div>
+                </div>
+
+                <!-- PORTA DA SALA -->
+                <div class="server-door">
+                    <span class="door-light"></span>
+                    <strong>SETOR 03</strong>
+                    <small>ACESSO RESTRITO</small>
+                    <span class="door-lock">🔒</span>
+                </div>
+
+                <div class="room-floor"></div>
+
+                <div class="room-label">
+                    SERVER ROOM // 02
+                </div>
+
+            </div>
+
+            <div class="tautologia-panel" hidden>
+
+                <div class="terminal-heading">
+
+                    <div class="terminal-symbol">⌘</div>
+
+                    <div>
+                        <span class="eyebrow">
+                            SISTEMA DE SEGURANÇA // NÍVEL 02
+                        </span>
+
+                        <h3>Protocolo de autenticação</h3>
+                    </div>
+
+                </div>
+
+                <p>
+                    Uma senha foi protegida por um protocolo lógico.
+                    Para revelá-la, identifique uma expressão que
+                    permaneça verdadeira para todas as possibilidades.
+                </p>
+
+
+                <!-- ESCOLHA DA EXPRESSÃO -->
+                <div class="puzzle-section">
+
+                    <span class="section-label">
+                        01 // SELECIONE A EXPRESSÃO
+                    </span>
+
+                    <div class="tautologia-opcoes">
+
+                        <button
+                            class="logic-option"
+                            data-expressao="contradicao"
+                        >
+                            <span class="option-letter">A</span>
+                            <span>
+                                <strong>P ∧ ¬P</strong>
+                                <small>Conjunção</small>
+                            </span>
+                        </button>
+
+                        <button
+                            class="logic-option"
+                            data-expressao="tautologia"
+                        >
+                            <span class="option-letter">B</span>
+                            <span>
+                                <strong>P ∨ ¬P</strong>
+                                <small>Lei do terceiro excluído</small>
+                            </span>
+                        </button>
+
+                        <button
+                            class="logic-option"
+                            data-expressao="implicacao"
+                        >
+                            <span class="option-letter">C</span>
+                            <span>
+                                <strong>P → ¬P</strong>
+                                <small>Implicação</small>
+                            </span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABELA-VERDADE INTERATIVA -->
+                <div id="painel-verdade" class="puzzle-section" hidden>
+
+                    <span class="section-label">
+                        02 // LABORATÓRIO DE VALORES LÓGICOS
+                    </span>
+
+                    <p>
+                        Altere P entre verdadeiro e falso.
+                        Observe o resultado e teste os dois valores
+                        antes de validar a expressão.
+                    </p>
+
+                    <div class="expression-display">
+                        <span>EXPRESSÃO SELECIONADA</span>
+                        <strong id="expressao-atual">P ∨ ¬P</strong>
+                    </div>
+
+                    <div class="value-control">
+
+                        <div>
+                            <span class="field-label">PROPOSIÇÃO</span>
+                            <strong id="valor-p-grande">P = V</strong>
+                        </div>
+
+                        <button
+                            id="valor-p"
+                            class="secondary-button"
+                            type="button"
+                        >
+                            ALTERNAR VALOR ↔
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="tabela-verdade">
+
+                            <thead>
+                                <tr>
+                                    <th>P</th>
+                                    <th>¬P</th>
+                                    <th>Resultado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td id="valor-p-tabela">V</td>
+                                    <td id="valor-negacao">F</td>
+                                    <td id="resultado-logico">V</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div class="test-progress">
+
+                        <span class="field-label">
+                            VALORES TESTADOS
+                        </span>
+
+                        <div class="progress-options">
+                            <span id="teste-verdadeiro" class="test-value">
+                                P = V · PENDENTE
+                            </span>
+
+                            <span id="teste-falso" class="test-value">
+                                P = F · PENDENTE
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        id="feedback-tautologia"
+                        class="feedback"
+                        aria-live="polite"
+                    >
+                        Selecione uma expressão para iniciar a análise.
+                    </p>
+
+                    <button
+                        id="validar-tautologia"
+                        class="primary-button"
+                        type="button"
+                    >
+                        VALIDAR EXPRESSÃO →
+                    </button>
+
+                </div>
+
+
+                <!-- SENHA -->
+                <div id="painel-senha" class="puzzle-section" hidden>
+
+                    <span class="section-label">
+                        03 // AUTENTICAÇÃO FINAL
+                    </span>
+
+                    <div class="success-banner">
+                        <span class="success-icon">✓</span>
+
+                        <div>
+                            <strong>TAUTOLOGIA CONFIRMADA</strong>
+                            <p>O protocolo lógico foi validado.</p>
+                        </div>
+                    </div>
+
+                    <p>
+                        O sistema revelou a senha de acesso.
+                        Digite-a para desbloquear o próximo setor.
+                    </p>
+
+                    <div id="senha-revelada" class="password-reveal">
+                        <span>SENHA DESCOBERTA</span>
+                        <strong>1010</strong>
+                    </div>
+
+                    <form id="form-senha" class="password-form">
+
+                        <label for="senha-digitada">
+                            SENHA DE ACESSO
+                        </label>
+
+                        <div class="password-input-group">
+
+                            <input
+                                type="text"
+                                id="senha-digitada"
+                                placeholder="Digite a senha"
+                                autocomplete="off"
+                                maxlength="4"
+                                inputmode="numeric"
+                                required
+                            >
+
+                            <button
+                                id="verificar-senha"
+                                class="primary-button"
+                                type="submit"
+                            >
+                                DESBLOQUEAR →
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <p
+                        id="feedback-senha"
+                        class="feedback"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAGEM DA SALA 02 -->
+            <div class="message-panel">
+
+                <span class="message-icon">i</span>
+
+                <div>
+                    <strong id="message-title-02">SISTEMA</strong>
+
+                    <p id="message-02">
+                        O terminal aguarda uma expressão lógica válida.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL DO JOGO -->
+        <section id="final-screen" class="final-screen" hidden>
+
+            <div class="final-icon">✓</div>
+
+            <span class="eyebrow">PROTOCOLO CONCLUÍDO</span>
+
+            <h2>Você venceu o <span>PARADOXO.</span></h2>
+
+            <p>
+                Você superou os sistemas de segurança usando a lógica
+                proposicional. Mas será que o laboratório realmente
+                deixou você escapar?
+            </p>
+
+            <div class="final-stats">
+
+                <div>
+                    <span>SETOR 01</span>
+                    <strong>CONCLUÍDO</strong>
+                </div>
+
+                <div>
+                    <span>SETOR 02</span>
+                    <strong>DESBLOQUEADO</strong>
+                </div>
+
+                <div>
+                    <span>TAUTOLOGIA</span>
+                    <strong>VALIDADA</strong>
+                </div>
+
+            </div>
+
+            <button id="restart-button" class="primary-button">
+                REINICIAR PROTOCOLO ↻
+            </button>
+
+        </section>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="game-footer">
+
+        <span>PARADOXO SYSTEMS © 2026</span>
+        <span>BUILD 0.3.0 // EXPERIMENTAL</span>
+
+    </footer>
+
+</main>
+
+
+<!-- JANELA DE INTERAÇÃO DA SALA 01 -->
+<div id="modal" class="modal" hidden>
+
+    <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+    >
+
+        <button
+            id="close-modal"
+            class="close-modal"
+            aria-label="Fechar janela"
+            type="button"
+        >
+            ×
+        </button>
+
+        <span id="modal-category" class="eyebrow">
+            INTERAÇÃO
+        </span>
+
+        <h2 id="modal-title">Título</h2>
+
+        <div id="modal-body"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
