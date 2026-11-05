@@ -26,6 +26,7 @@ let room = document.querySelector("#sala-01 .room");
 const room02 = document.querySelector("#sala-02 .room-02");
 const terminal02 = document.querySelector("#sala-02 .central-console");
 const painelTautologia = document.querySelector("#sala-02 .tautologia-panel");
+const serverDoor = room02.querySelector(".server-door");
 const player = document.getElementById("player");
 const interactionPrompt = document.getElementById("interaction-prompt");
 
@@ -129,30 +130,26 @@ function desenharJogador() {
 
 function obterAlvosInteracao() {
 
-    // Objetos da Sala 02
     if (!sala02.hidden) {
         return [
             {
                 elemento: terminal02,
                 nome: "TERMINAL DE TAUTOLOGIA",
                 acao: abrirTerminalTautologia
+            },
+            {
+                elemento: serverDoor,
+                nome: "PORTA DE SAÍDA",
+                acao: verificarPortaServidor
             }
         ];
     }
 
-    // Objetos da Sala 01
     return [
-    {
-        elemento: terminal02,
-        nome: "TERMINAL DE TAUTOLOGIA",
-        acao: abrirTerminalTautologia
-    },
-    {
-        elemento: serverDoor,
-        nome: "PORTA DE SAÍDA",
-        acao: verificarPortaServidor
-    }
-];
+        { elemento: cabinet, nome: "ARMÁRIO", acao: investigarArmario },
+        { elemento: terminal, nome: "TERMINAL", acao: investigarTerminal },
+        { elemento: door, nome: "PORTA DE SAÍDA", acao: verificarCondicoesPorta }
+    ];
 }
 function abrirTerminalTautologia() {
 
@@ -170,10 +167,10 @@ function abrirTerminalTautologia() {
 }
 function verificarPortaServidor() {
 
-    if (!estado.senhaTautologiaDescoberta) {
+    if (!estado.senhaTautologiaDigitada) {
         atualizarMensagem02(
             "ACESSO BLOQUEADO",
-            "A porta exige a conclusão do protocolo de tautologia."
+            "Você precisa concluir a autenticação do terminal primeiro."
         );
         return;
     }
@@ -181,19 +178,39 @@ function verificarPortaServidor() {
     concluirJogo();
 }
 function atualizarAlvoProximo() {
-    const centroJogadorX = estado.jogador.x + 17;
-    const centroJogadorY = estado.jogador.y + 24;
+    const jogadorEsquerda = estado.jogador.x;
+    const jogadorDireita = estado.jogador.x + 34;
+    const jogadorTopo = estado.jogador.y;
+    const jogadorBase = estado.jogador.y + 48;
+
     let maisProximo = null;
     let menorDistancia = Infinity;
 
     obterAlvosInteracao().forEach(alvo => {
         const caixa = alvo.elemento.getBoundingClientRect();
         const salaCaixa = room.getBoundingClientRect();
-        const centroX = caixa.left - salaCaixa.left + caixa.width / 2;
-        const centroY = caixa.top - salaCaixa.top + caixa.height / 2;
-        const distancia = Math.hypot(centroJogadorX - centroX, centroJogadorY - centroY);
+
+        const esquerda = caixa.left - salaCaixa.left;
+        const direita = esquerda + caixa.width;
+        const topo = caixa.top - salaCaixa.top;
+        const base = topo + caixa.height;
+
+        const distanciaX = Math.max(
+            esquerda - jogadorDireita,
+            jogadorEsquerda - direita,
+            0
+        );
+
+        const distanciaY = Math.max(
+            topo - jogadorBase,
+            jogadorTopo - base,
+            0
+        );
+
+        const distancia = Math.hypot(distanciaX, distanciaY);
 
         alvo.elemento.classList.remove("nearby");
+
         if (distancia < menorDistancia) {
             menorDistancia = distancia;
             maisProximo = alvo;
@@ -203,10 +220,14 @@ function atualizarAlvoProximo() {
     if (maisProximo && menorDistancia < distanciaInteracao) {
         alvoProximo = maisProximo;
         alvoProximo.elemento.classList.add("nearby");
-        interactionPrompt.innerHTML = `PRESSIONE <kbd>E</kbd> PARA INTERAGIR: ${alvoProximo.nome}`;
+
+        interactionPrompt.innerHTML =
+            `PRESSIONE <kbd>E</kbd> PARA INTERAGIR: ${alvoProximo.nome}`;
     } else {
         alvoProximo = null;
-        interactionPrompt.innerHTML = 'USE <kbd>W A S D</kbd> OU <kbd>↑ ↓ ← →</kbd> PARA SE MOVER';
+
+        interactionPrompt.innerHTML =
+            'USE <kbd>W A S D</kbd> OU <kbd>↑ ↓ ← →</kbd> PARA SE MOVER';
     }
 }
 
@@ -371,6 +392,7 @@ door.addEventListener("click", verificarCondicoesPorta);
 
 function iniciarJogo() {
     estado.iniciada = true;
+    estado.tempoInicio = Date.now();
 
     menu.classList.remove("active");
     gameScreen.classList.add("active");
@@ -1330,6 +1352,7 @@ function verificarSenhaTautologia() {
     }
 
     estado.senhaTautologiaDigitada = true;
+    serverDoor.classList.add("liberada");
 
     feedbackSenha.textContent =
         "ACESSO AUTORIZADO! O segundo setor foi desbloqueado.";
@@ -1340,13 +1363,10 @@ function verificarSenhaTautologia() {
 
     document.getElementById("verificar-senha").disabled = true;
 
-    const botaoContinuar = criarBotao(
-        "CONCLUIR PROTOCOLO →",
-        "primary-button",
-        concluirJogo
+    atualizarMensagem02(
+        "PORTA DE SAÍDA LIBERADA",
+        "A senha foi aceita! Encontre a porta de saída e pressione E para concluir o protocolo."
     );
-
-    painelSenha.append(botaoContinuar);
 
     atualizarMensagem02(
         "SETOR 02 DESBLOQUEADO",
@@ -1360,9 +1380,26 @@ function verificarSenhaTautologia() {
 // ========================================
 
 function concluirJogo() {
+    const tempoDecorrido = Math.floor(
+    (Date.now() - estado.tempoInicio) / 1000
+    );
+
+    const minutos = Math.floor(tempoDecorrido / 60);
+    const segundos = tempoDecorrido % 60;
+
+    const tempoFormatado =
+        `${minutos} min ${String(segundos).padStart(2, "0")} s`;
     sala02.hidden = true;
     finalScreen.hidden = false;
+    let resultadoTempo = document.getElementById("tempo-final");
 
+    if (!resultadoTempo) {
+        resultadoTempo = document.createElement("p");
+        resultadoTempo.id = "tempo-final";
+        finalScreen.appendChild(resultadoTempo);
+    }
+
+    resultadoTempo.textContent = `TEMPO DE CONCLUSÃO: ${tempoFormatado}`;
     atualizarMensagem02(
         "PROTOCOLO CONCLUÍDO",
         "Você superou os desafios lógicos do laboratório."
