@@ -2723,3 +2723,1872 @@ p {
         inset 0 0 18px rgba(0, 0, 0, 0.5),
         0 0 18px rgba(85, 242, 194, 0.25);
 }
+
+/* ========================================
+   PARADOXO — BANCADA DO TERMINAL
+======================================== */
+
+.terminal {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Monitor visto de cima */
+.terminal-screen {
+    position: absolute;
+    top: 9%;
+    left: 12%;
+    width: 76%;
+    height: 38%;
+
+    display: block;
+
+    border: 2px solid #55f2c2;
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85, 242, 194, 0.2),
+            rgba(5, 25, 31, 0.95)
+        );
+
+    box-shadow:
+        inset 0 0 18px rgba(85, 242, 194, 0.15),
+        0 0 12px rgba(85, 242, 194, 0.12);
+}
+
+/* Brilho da tela */
+.terminal-screen::after {
+    content: "";
+    position: absolute;
+    inset: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 48%,
+            rgba(85, 242, 194, 0.12) 50%,
+            transparent 52%
+        );
+
+    border-radius: 3px;
+}
+
+/* Teclado */
+.terminal-keyboard {
+    position: absolute;
+    top: 55%;
+    left: 25%;
+    width: 50%;
+    height: 16%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3px;
+
+    padding: 4px;
+    box-sizing: border-box;
+
+    background: #101d25;
+    border: 1px solid #587580;
+    border-radius: 4px;
+}
+
+/* Teclas individuais */
+.terminal-keyboard span {
+    display: block;
+    flex: 1;
+    height: 65%;
+
+    background: #55f2c2;
+    opacity: 0.65;
+    border-radius: 1px;
+}
+
+/* Luz de funcionamento */
+.terminal-status {
+    position: absolute;
+    top: 58%;
+    right: 17%;
+
+    width: 7px;
+    height: 7px;
+
+    display: block;
+    border-radius: 50%;
+
+    background: #55f2c2;
+    box-shadow: 0 0 8px #55f2c2;
+}
+
+/* Nome do equipamento */
+.terminal-label {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    width: 100%;
+
+    color: #eaf4f5;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Texto de interação */
+.terminal small {
+    position: absolute;
+    top: 88%;
+    left: 0;
+    width: 100%;
+}
+/* ========================================
+   AJUSTE FINO — BANCADA DO TERMINAL
+======================================== */
+
+.room-object.terminal {
+    display: block !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.room-object.terminal .terminal-screen {
+    top: 8% !important;
+    left: 12% !important;
+    width: 76% !important;
+    height: 34% !important;
+    z-index: 2;
+}
+
+.room-object.terminal .terminal-keyboard {
+    top: 49% !important;
+    left: 25% !important;
+    width: 50% !important;
+    height: 15% !important;
+    z-index: 3;
+}
+
+.room-object.terminal .terminal-status {
+    top: 52% !important;
+    right: 17% !important;
+    z-index: 4;
+}
+
+.room-object.terminal .terminal-label {
+    top: 69% !important;
+    left: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    z-index: 5;
+    color: #eaf4f5 !important;
+}
+
+.room-object.terminal small {
+    top: 85% !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 5;
+}
+
+/* ========================================
+   CORREÇÃO DEFINITIVA — TERMINAL
+======================================== */
+
+/* Remove os desenhos antigos */
+.terminal::before,
+.terminal::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Monitor */
+.room-object.terminal .terminal-screen {
+    position: absolute;
+    top: 8%;
+    left: 12%;
+    width: 76%;
+    height: 34%;
+    display: block;
+    z-index: 2;
+
+    border: 2px solid #55f2c2;
+    border-radius: 5px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(85, 242, 194, .22),
+        #081d23
+    );
+
+    box-shadow:
+        inset 0 0 15px rgba(85, 242, 194, .15),
+        0 0 10px rgba(85, 242, 194, .12);
+}
+
+/* Teclado */
+.room-object.terminal .terminal-keyboard {
+    position: absolute;
+    top: 49%;
+    left: 25%;
+    width: 50%;
+    height: 15%;
+    display: flex;
+    z-index: 3;
+
+    padding: 4px;
+    gap: 3px;
+
+    border: 1px solid #587580;
+    border-radius: 4px;
+    background: #101d25;
+}
+
+.room-object.terminal .terminal-keyboard span {
+    flex: 1;
+    height: 65%;
+    background: #55f2c2;
+    opacity: .65;
+}
+
+/* Luz */
+.room-object.terminal .terminal-status {
+    position: absolute;
+    top: 53%;
+    right: 17%;
+    z-index: 4;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+    background: #55f2c2;
+    box-shadow: 0 0 8px #55f2c2;
+}
+
+/* Nome */
+.room-object.terminal .terminal-label {
+    position: absolute;
+    top: 69%;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+
+    display: block;
+    color: #eaf4f5;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Investigação */
+.room-object.terminal small {
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    text-align: center;
+}
+
+/* ========================================
+   PARADOXO — ARQUITETURA DO LABORATÓRIO
+======================================== */
+
+/* Estrutura geral */
+.room {
+    background-color: #172832 !important;
+
+    background-image:
+        /* Placas do piso */
+        linear-gradient(
+            rgba(0, 0, 0, .13) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .13) 1px,
+            transparent 1px
+        ),
+
+        /* Divisões metálicas do piso */
+        linear-gradient(
+            90deg,
+            transparent 24.8%,
+            rgba(130, 165, 175, .09) 25%,
+            transparent 25.2%,
+            transparent 74.8%,
+            rgba(130, 165, 175, .09) 75%,
+            transparent 75.2%
+        ),
+
+        /* Iluminação ambiente */
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(85, 242, 194, .09),
+            transparent 65%
+        ),
+
+        linear-gradient(
+            145deg,
+            #263943,
+            #14232d 65%,
+            #1d3039
+        );
+
+    background-size:
+        64px 64px,
+        64px 64px,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+
+    border: 12px solid #344954 !important;
+
+    box-shadow:
+        inset 0 0 45px rgba(0, 0, 0, .5),
+        inset 0 0 0 2px rgba(130, 170, 180, .12),
+        0 12px 35px rgba(0, 0, 0, .35);
+}
+
+/* Paredes e estruturas laterais */
+.room::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        /* Estrutura superior */
+        linear-gradient(
+            180deg,
+            rgba(110, 150, 160, .22) 0,
+            rgba(35, 58, 68, .35) 12px,
+            transparent 35px
+        ),
+
+        /* Estrutura lateral esquerda */
+        linear-gradient(
+            90deg,
+            rgba(120, 155, 165, .16),
+            transparent 22px
+        ),
+
+        /* Estrutura lateral direita */
+        linear-gradient(
+            270deg,
+            rgba(120, 155, 165, .16),
+            transparent 22px
+        ),
+
+        /* Rodapé superior iluminado */
+        linear-gradient(
+            180deg,
+            transparent 95%,
+            rgba(85, 242, 194, .035)
+        );
+}
+
+/* Marcação técnica no piso */
+.room::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+
+    top: 50%;
+    left: 50%;
+
+    width: 240px;
+    height: 240px;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(85, 242, 194, .07);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 18px rgba(85, 242, 194, .025),
+        0 0 0 38px rgba(85, 242, 194, .018),
+        inset 0 0 35px rgba(85, 242, 194, .025);
+
+    pointer-events: none;
+}
+
+/* Iluminação superior */
+.room-lights {
+    height: 5px !important;
+    opacity: .95 !important;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #55f2c2 12%,
+        #55f2c2 88%,
+        transparent
+    ) !important;
+
+    box-shadow:
+        0 0 12px rgba(85, 242, 194, .8),
+        0 0 35px rgba(85, 242, 194, .3) !important;
+}
+
+/* Rodapé industrial */
+.room-floor {
+    height: 24px !important;
+
+    border-top: 2px solid #405b65 !important;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 75px,
+            rgba(130, 170, 180, .12) 76px 78px
+        ),
+        linear-gradient(
+            #1b303a,
+            #0b151d
+        ) !important;
+
+    box-shadow:
+        0 -5px 15px rgba(0, 0, 0, .25),
+        inset 0 1px rgba(255, 255, 255, .04);
+}
+
+/* ========================================
+   PARADOXO — INSTALAÇÕES INDUSTRIAIS
+======================================== */
+
+/* Tubulações e estruturas nas paredes */
+.room {
+    background-image:
+        /* Tubulação horizontal superior */
+        linear-gradient(
+            90deg,
+            transparent 4%,
+            #405c67 4%,
+            #405c67 4.5%,
+            transparent 4.5%,
+            transparent 95.5%,
+            #405c67 95.5%,
+            #405c67 96%,
+            transparent 96%
+        ),
+
+        /* Tubulação vertical esquerda */
+        linear-gradient(
+            90deg,
+            transparent 5%,
+            rgba(100, 145, 155, .3) 5%,
+            rgba(100, 145, 155, .3) 5.5%,
+            transparent 5.5%
+        ),
+
+        /* Tubulação vertical direita */
+        linear-gradient(
+            90deg,
+            transparent 94.5%,
+            rgba(100, 145, 155, .3) 94.5%,
+            rgba(100, 145, 155, .3) 95%,
+            transparent 95%
+        ),
+
+        /* Painéis laterais */
+        linear-gradient(
+            90deg,
+            rgba(75, 110, 125, .16) 0%,
+            transparent 12%,
+            transparent 88%,
+            rgba(75, 110, 125, .16) 100%
+        ),
+
+        /* Piso */
+        linear-gradient(
+            135deg,
+            #263943,
+            #192832 55%,
+            #202f38
+        );
+
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 100%;
+}
+
+/* Luminárias industriais */
+.room-lights {
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            #55f2c2 12%,
+            #b4ffe9 50%,
+            #55f2c2 88%,
+            transparent 100%
+        ) !important;
+
+    box-shadow:
+        0 0 12px rgba(85, 242, 194, .8),
+        0 0 30px rgba(85, 242, 194, .3),
+        0 8px 20px rgba(85, 242, 194, .08) !important;
+}
+
+/* ========================================
+   PARADOXO — SINALIZAÇÃO DO LABORATÓRIO
+======================================== */
+
+/* Faixa de segurança no piso */
+.room-floor {
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            transparent 0 13px,
+            rgba(255, 190, 70, .35) 14px 17px,
+            transparent 18px 28px
+        ),
+        linear-gradient(
+            #1b303a,
+            #0b151d
+        ) !important;
+
+    background-size:
+        75px 100%,
+        100% 100%;
+}
+
+/* Brilho técnico no chão */
+.room {
+    box-shadow:
+        inset 0 0 45px rgba(0, 0, 0, .5),
+        inset 0 0 0 2px rgba(130, 170, 180, .12),
+        0 12px 35px rgba(0, 0, 0, .35);
+}
+
+/* ========================================
+   PARADOXO — PAINÉIS ELÉTRICOS
+======================================== */
+
+.room {
+    --panel-metal: #304752;
+}
+
+/* Painel lateral esquerdo */
+.room::before {
+    background:
+        /* Moldura do painel esquerdo */
+        linear-gradient(
+            #405d68,
+            #405d68
+        ) 2% 22% / 9% 3px no-repeat,
+
+        linear-gradient(
+            #405d68,
+            #405d68
+        ) 2% 43% / 9% 3px no-repeat,
+
+        linear-gradient(
+            90deg,
+            #263d48,
+            #101d26
+        ) 3% 23% / 8% 19% no-repeat,
+
+        /* Painel lateral direito */
+        linear-gradient(
+            90deg,
+            #263d48,
+            #101d26
+        ) 89% 23% / 8% 19% no-repeat,
+
+        /* Luzes do painel esquerdo */
+        radial-gradient(circle, #55f2c2 2px, transparent 3px)
+        5% 27% / 12px 12px no-repeat,
+
+        radial-gradient(circle, #5d9fff 2px, transparent 3px)
+        5% 34% / 12px 12px no-repeat,
+
+        radial-gradient(circle, #ffb84d 2px, transparent 3px)
+        5% 41% / 12px 12px no-repeat,
+
+        /* Luzes do painel direito */
+        radial-gradient(circle, #55f2c2 2px, transparent 3px)
+        92% 27% / 12px 12px no-repeat,
+
+        radial-gradient(circle, #5d9fff 2px, transparent 3px)
+        92% 34% / 12px 12px no-repeat,
+
+        radial-gradient(circle, #ffb84d 2px, transparent 3px)
+        92% 41% / 12px 12px no-repeat,
+
+        /* Mantém a iluminação e a estrutura existentes */
+        linear-gradient(
+            180deg,
+            rgba(110, 150, 160, .16),
+            transparent 20%
+        );
+
+    pointer-events: none;
+}
+
+/* Detalhes metálicos dos painéis */
+.room::after {
+    width: 240px;
+    height: 240px;
+    border-color: rgba(85, 242, 194, .07);
+}
+
+/* Pequenos pontos luminosos nos equipamentos */
+.room-object {
+    position: absolute;
+}
+
+.room-object:hover {
+    filter: brightness(1.12);
+}
+
+/* ========================================
+   PARADOXO — INFRAESTRUTURA
+======================================== */
+
+.room {
+    background-image:
+        /* Linha de conduíte superior */
+        linear-gradient(
+            90deg,
+            transparent 3%,
+            #506d77 3% 3.4%,
+            transparent 3.4% 96.6%,
+            #506d77 96.6% 97%,
+            transparent 97%
+        ),
+
+        /* Faixa técnica na parte superior */
+        linear-gradient(
+            180deg,
+            rgba(85, 242, 194, .07) 0 2%,
+            transparent 2% 100%
+        ),
+
+        /* Piso modular */
+        linear-gradient(
+            rgba(0, 0, 0, .12) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, .12) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            135deg,
+            #263943,
+            #192832 55%,
+            #202f38
+        );
+
+    background-size:
+        100% 100%,
+        100% 100%,
+        64px 64px,
+        64px 64px,
+        100% 100%;
+}
+/* ========================================
+   PARADOXO — ESTRUTURA DO LABORATÓRIO
+======================================== */
+
+.room-lights {
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Painel elétrico esquerdo */
+.room-lights::before {
+    content: "";
+    position: absolute;
+    top: 55px;
+    left: 18px;
+    width: 38px;
+    height: 125px;
+
+    background:
+        radial-gradient(circle, #55f2c2 0 2px, transparent 3px)
+        8px 12px / 16px 20px,
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 15px,
+            rgba(85, 242, 194, 0.15) 16px 17px
+        ),
+        linear-gradient(135deg, #1b2a35, #080f16);
+
+    border: 2px solid #344b59;
+    border-radius: 4px;
+
+    box-shadow:
+        inset 0 0 12px #000,
+        0 0 12px rgba(85, 242, 194, 0.12);
+}
+
+/* Painel elétrico direito */
+.room-lights::after {
+    content: "";
+    position: absolute;
+    top: 55px;
+    right: 18px;
+    width: 38px;
+    height: 125px;
+
+    background:
+        radial-gradient(circle, #ffca58 0 2px, transparent 3px)
+        8px 12px / 16px 20px,
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 15px,
+            rgba(255, 202, 88, 0.15) 16px 17px
+        ),
+        linear-gradient(135deg, #1b2a35, #080f16);
+
+    border: 2px solid #344b59;
+    border-radius: 4px;
+
+    box-shadow:
+        inset 0 0 12px #000,
+        0 0 12px rgba(255, 202, 88, 0.12);
+}
+/* ========================================
+   ÁREA TÉCNICA DO LABORATÓRIO
+======================================== */
+
+.room-floor {
+    pointer-events: none;
+}
+
+.room-floor::before {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+
+    width: 230px;
+    height: 34px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255, 190, 70, 0.75) 0 8px,
+            rgba(20, 27, 33, 0.9) 8px 16px
+        );
+
+    border: 2px solid rgba(255, 190, 70, 0.35);
+    opacity: 0.45;
+    border-radius: 3px;
+}
+
+.room-floor::after {
+    content: "";
+    position: absolute;
+
+    right: 85px;
+    bottom: 85px;
+
+    width: 65px;
+    height: 65px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 5px,
+            rgba(85, 242, 194, 0.12) 6px 7px
+        );
+
+    border: 1px solid rgba(85, 242, 194, 0.25);
+    border-radius: 4px;
+    opacity: 0.7;
+}
+/* ========================================
+   PARADOXO — CORREDORES DE MANUTENÇÃO
+======================================== */
+
+/* Faixas de circulação nas laterais */
+.room {
+    background-image:
+        linear-gradient(
+            90deg,
+            transparent 0 7%,
+            rgba(85, 242, 194, 0.035) 7.2% 7.5%,
+            transparent 7.7% 92.3%,
+            rgba(85, 242, 194, 0.035) 92.5% 92.8%,
+            transparent 93%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 0 18%,
+            rgba(85, 242, 194, 0.025) 18.2% 18.5%,
+            transparent 18.7%
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 79px,
+            rgba(120, 160, 175, 0.035) 80px 81px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 79px,
+            rgba(120, 160, 175, 0.035) 80px 81px
+        ),
+        linear-gradient(145deg, #111d27, #080e15);
+}
+
+/* Linhas de circulação no piso */
+.room-floor {
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0 12%,
+            rgba(85, 242, 194, 0.10) 12.2% 12.5%,
+            transparent 12.7% 87.3%,
+            rgba(85, 242, 194, 0.10) 87.5% 87.8%,
+            transparent 88%
+        );
+}
+
+/* Pequenas marcações de segurança */
+.room-floor::before {
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #b98a35 0 7px,
+            #202832 7px 14px
+        );
+    box-shadow: 0 0 12px rgba(255, 190, 70, 0.12);
+}
+/* ========================================
+   PARADOXO — TUBULAÇÕES E CABEAMENTO
+======================================== */
+
+.room-lights {
+    background-image:
+        /* Tubulação horizontal superior */
+        linear-gradient(
+            90deg,
+            transparent 0 8%,
+            rgba(75, 112, 128, 0.65) 8% 8.5%,
+            transparent 8.5% 91.5%,
+            rgba(75, 112, 128, 0.65) 91.5% 92%,
+            transparent 92%
+        ),
+
+        /* Tubulação vertical esquerda */
+        linear-gradient(
+            90deg,
+            transparent 6.8%,
+            rgba(65, 105, 120, 0.35) 7%,
+            rgba(65, 105, 120, 0.35) 7.3%,
+            transparent 7.5%
+        ),
+
+        /* Tubulação vertical direita */
+        linear-gradient(
+            90deg,
+            transparent 92.5%,
+            rgba(65, 105, 120, 0.35) 92.7%,
+            rgba(65, 105, 120, 0.35) 93%,
+            transparent 93.2%
+        );
+
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+/* Reforço da profundidade das paredes */
+.room {
+    box-shadow:
+        inset 0 0 35px rgba(0, 0, 0, 0.65),
+        inset 0 0 8px rgba(85, 242, 194, 0.08);
+}
+
+/* Iluminação ambiente */
+.room::after {
+    box-shadow:
+        0 0 45px rgba(85, 242, 194, 0.035),
+        inset 0 0 35px rgba(85, 242, 194, 0.025);
+}
+/* ========================================
+   PARADOXO — ILUMINAÇÃO DOS EQUIPAMENTOS
+======================================== */
+
+/* Terminal */
+.terminal {
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(85, 242, 194, 0.16),
+        inset 0 0 15px rgba(85, 242, 194, 0.07);
+}
+
+/* Armário */
+.cabinet {
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.65),
+        0 0 12px rgba(85, 242, 194, 0.07),
+        inset 0 0 12px rgba(85, 242, 194, 0.035);
+}
+
+/* Porta de saída */
+.door {
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 18px rgba(85, 242, 194, 0.06);
+}
+
+/* Personagem */
+.player {
+    filter:
+        drop-shadow(0 5px 5px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 0 5px rgba(85, 242, 194, 0.16));
+}
+
+/* Objetos interativos */
+.room-object:hover {
+    filter: brightness(1.12);
+    transition: filter 0.2s ease;
+}
+/* ========================================
+   PARADOXO — VENTILAÇÃO INDUSTRIAL
+======================================== */
+
+/* Grade de ventilação superior */
+.room-lights {
+    background-image:
+        /* Tubulação horizontal */
+        linear-gradient(
+            90deg,
+            transparent 0 8%,
+            rgba(75, 112, 128, 0.65) 8% 8.5%,
+            transparent 8.5% 91.5%,
+            rgba(75, 112, 128, 0.65) 91.5% 92%,
+            transparent 92%
+        ),
+
+        /* Tubulações verticais */
+        linear-gradient(
+            90deg,
+            transparent 6.8%,
+            rgba(65, 105, 120, 0.35) 7% 7.3%,
+            transparent 7.5%
+        ),
+
+        linear-gradient(
+            90deg,
+            transparent 92.5%,
+            rgba(65, 105, 120, 0.35) 92.7% 93%,
+            transparent 93.2%
+        ),
+
+        /* Aletas da ventilação */
+        repeating-linear-gradient(
+            90deg,
+            #425b66 0 2px,
+            #172832 2px 9px
+        ),
+
+        /* Fundo metálico da ventilação */
+        linear-gradient(145deg, #263d49, #0b151d);
+
+    background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        110px 30px,
+        110px 30px;
+
+    background-position:
+        center,
+        center,
+        center,
+        center 22px,
+        center 22px;
+
+    background-repeat: no-repeat;
+}
+
+/* Pequena luz de funcionamento da ventilação */
+.room-lights {
+    box-shadow:
+        inset 0 0 22px rgba(85, 242, 194, 0.035);
+}
+
+/* ========================================
+   PARADOXO — SALA 01
+   ACABAMENTO VISUAL COMPLETO
+======================================== */
+
+/* ===== ESTRUTURA E PROFUNDIDADE ===== */
+
+.room {
+    isolation: isolate;
+    box-shadow:
+        inset 0 0 45px rgba(0, 0, 0, 0.7),
+        inset 0 0 12px rgba(85, 242, 194, 0.08);
+}
+
+/* ===== PAINÉIS ELÉTRICOS LATERAIS ===== */
+
+.room-lights {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.room-lights::before,
+.room-lights::after {
+    content: "";
+    position: absolute;
+    top: 55px;
+    width: 38px;
+    height: 125px;
+    border: 2px solid #344b59;
+    border-radius: 4px;
+    background:
+        radial-gradient(circle, #55f2c2 0 2px, transparent 3px)
+        8px 12px / 16px 20px,
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 15px,
+            rgba(85, 242, 194, 0.15) 16px 17px
+        ),
+        linear-gradient(135deg, #1b2a35, #080f16);
+    box-shadow:
+        inset 0 0 12px #000,
+        0 0 12px rgba(85, 242, 194, 0.12);
+}
+
+.room-lights::before {
+    left: 18px;
+}
+
+.room-lights::after {
+    right: 18px;
+    background:
+        radial-gradient(circle, #ffca58 0 2px, transparent 3px)
+        8px 12px / 16px 20px,
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0 15px,
+            rgba(255, 202, 88, 0.15) 16px 17px
+        ),
+        linear-gradient(135deg, #1b2a35, #080f16);
+}
+
+/* ===== PISO INDUSTRIAL ===== */
+
+.room-floor {
+    pointer-events: none;
+    z-index: 1;
+}
+
+.room-floor::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 230px;
+    height: 34px;
+    border: 2px solid rgba(255, 190, 70, 0.35);
+    border-radius: 3px;
+    background: repeating-linear-gradient(
+        135deg,
+        rgba(255, 190, 70, 0.75) 0 8px,
+        rgba(20, 27, 33, 0.9) 8px 16px
+    );
+    opacity: 0.45;
+}
+
+.room-floor::after {
+    content: "";
+    position: absolute;
+    right: 85px;
+    bottom: 85px;
+    width: 65px;
+    height: 65px;
+    border: 1px solid rgba(85, 242, 194, 0.25);
+    border-radius: 4px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 5px,
+            rgba(85, 242, 194, 0.12) 6px 7px
+        );
+    opacity: 0.7;
+}
+
+/* ===== EQUIPAMENTOS ===== */
+
+.terminal {
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.65),
+        0 0 18px rgba(85, 242, 194, 0.16),
+        inset 0 0 15px rgba(85, 242, 194, 0.07);
+}
+
+.cabinet {
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.65),
+        0 0 12px rgba(85, 242, 194, 0.07),
+        inset 0 0 12px rgba(85, 242, 194, 0.035);
+}
+
+.door {
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 18px rgba(85, 242, 194, 0.06);
+}
+
+/* ===== PERSONAGEM ===== */
+
+.player {
+    filter:
+        drop-shadow(0 5px 5px rgba(0, 0, 0, 0.8))
+        drop-shadow(0 0 5px rgba(85, 242, 194, 0.16));
+}
+
+/* ===== INTERAÇÃO ===== */
+
+.room-object:hover {
+    filter: brightness(1.12);
+    transition: filter 0.2s ease;
+}
+
+/* ===== ILUMINAÇÃO AMBIENTE ===== */
+
+.room::after {
+    box-shadow:
+        0 0 45px rgba(85, 242, 194, 0.035),
+        inset 0 0 35px rgba(85, 242, 194, 0.025);
+}
+
+/* ========================================
+   PARADOXO — FINALIZAÇÃO DA SALA 01
+   INFRAESTRUTURA E ACABAMENTO
+======================================== */
+
+/* ===== TUBULAÇÕES SUPERIORES ===== */
+
+.room-lights {
+    overflow: visible;
+}
+
+.room-lights .pipe {
+    display: none;
+}
+
+/* Tubulação horizontal */
+.room {
+    background-image:
+        linear-gradient(
+            90deg,
+            transparent 5%,
+            rgba(72, 105, 120, .8) 5.2%,
+            rgba(72, 105, 120, .8) 5.7%,
+            transparent 5.9%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 94%,
+            rgba(72, 105, 120, .8) 94.2%,
+            rgba(72, 105, 120, .8) 94.7%,
+            transparent 94.9%
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 78px,
+            rgba(120, 160, 175, .035) 79px 80px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 78px,
+            rgba(120, 160, 175, .035) 79px 80px
+        ),
+        linear-gradient(145deg, #111d27, #080e15);
+}
+
+/* ===== GRADE DE VENTILAÇÃO ===== */
+
+.room-header {
+    position: relative;
+}
+
+.room-header::after {
+    content: "VENTILAÇÃO";
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 105px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #78909c;
+    border: 1px solid #344b59;
+    background: repeating-linear-gradient(
+        90deg,
+        #263b47 0 3px,
+        #101c25 3px 8px
+    );
+    box-shadow: inset 0 0 8px #000;
+}
+
+/* ===== SINALIZAÇÃO DE SEGURANÇA ===== */
+
+.room-header::before {
+    content: "SETOR 01  //  ACESSO RESTRITO";
+    position: absolute;
+    left: 24px;
+    bottom: -13px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: rgba(255, 190, 70, .75);
+    z-index: 4;
+}
+
+/* ===== ACABAMENTO METÁLICO ===== */
+
+.terminal,
+.cabinet,
+.door {
+    border-color: rgba(110, 145, 160, .55);
+}
+
+/* ===== SOMBRAS DE CONTATO ===== */
+
+.terminal,
+.cabinet {
+    filter: drop-shadow(0 8px 7px rgba(0, 0, 0, .45));
+}
+
+/* ===== LUZES DE EMERGÊNCIA ===== */
+
+.room-lights {
+    box-shadow:
+        inset 0 0 25px rgba(85, 242, 194, .04);
+}
+
+/* ===== MARCAÇÕES DE PISO ===== */
+
+.room-floor {
+    border-radius: 2px;
+}
+
+.room-floor::before {
+    opacity: .32;
+}
+
+.room-floor::after {
+    box-shadow:
+        0 0 12px rgba(85, 242, 194, .08),
+        inset 0 0 12px rgba(85, 242, 194, .05);
+}
+
+/* ===== ACABAMENTO FINAL ===== */
+
+.room-object {
+    transition:
+        filter .2s ease,
+        box-shadow .2s ease;
+}
+
+.room-object:hover {
+    filter: brightness(1.15);
+}
+
+/* ================================================
+   PARADOXO — SALA 02
+   CENTRAL DE AUTENTICAÇÃO LÓGICA
+================================================ */
+
+/* ===== AMBIENTE PRINCIPAL ===== */
+
+#sala-02 {
+    position: relative;
+    isolation: isolate;
+    min-height: 650px;
+    padding-bottom: 30px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 42%,
+            rgba(85, 242, 194, 0.075),
+            transparent 48%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 4%,
+            rgba(93, 159, 255, 0.035) 4.2%,
+            transparent 4.5% 95.5%,
+            rgba(93, 159, 255, 0.035) 95.8%,
+            transparent 96%
+        );
+}
+
+/* Grade técnica de fundo */
+#sala-02::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(85, 242, 194, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(85, 242, 194, 0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 42px 42px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent,
+        black 12%,
+        black 85%,
+        transparent
+    );
+}
+
+/* ===== CABEÇALHO DO SETOR ===== */
+
+#sala-02 .room-header {
+    position: relative;
+    padding: 20px 22px;
+
+    border: 1px solid rgba(93, 159, 255, 0.2);
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(93, 159, 255, 0.08),
+            transparent 70%
+        ),
+        #0d151d;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        inset 3px 0 0 #5d9fff;
+}
+
+#sala-02 .room-header .eyebrow {
+    color: #75aaff;
+}
+
+#sala-02 .room-header h2 span {
+    color: #55f2c2;
+}
+
+#sala-02 .objective {
+    border-color: rgba(93, 159, 255, 0.3);
+    background: #101e2b;
+}
+
+#sala-02 .objective strong {
+    color: #75aaff;
+}
+
+/* ===== TERMINAL CENTRAL ===== */
+
+#sala-02 .tautologia-panel {
+    position: relative;
+    z-index: 1;
+
+    max-width: 950px;
+    margin: 35px auto;
+    padding: clamp(22px, 4vw, 42px);
+
+    border: 1px solid rgba(85, 242, 194, 0.28);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(85, 242, 194, 0.045),
+            transparent 40%
+        ),
+        linear-gradient(
+            315deg,
+            rgba(93, 159, 255, 0.035),
+            transparent 45%
+        ),
+        #0c151e;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.4),
+        inset 0 0 35px rgba(85, 242, 194, 0.025);
+}
+
+/* Barra superior do equipamento */
+#sala-02 .tautologia-panel::before {
+    content: "AUTHENTICATION CORE  //  SYS.02";
+
+    display: block;
+    margin: -42px -42px 30px;
+    padding: 12px 22px;
+
+    border-bottom: 1px solid rgba(85, 242, 194, 0.2);
+
+    background: #111f2b;
+
+    color: #6f8c9d;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+}
+
+#sala-02 .terminal-heading {
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(93, 159, 255, 0.18);
+}
+
+#sala-02 .terminal-symbol {
+    border-color: #5d9fff;
+    color: #75aaff;
+
+    background: rgba(93, 159, 255, 0.09);
+
+    box-shadow: 0 0 22px rgba(93, 159, 255, 0.12);
+}
+
+#sala-02 .terminal-heading h3 {
+    color: #eaf4f5;
+}
+
+/* ===== ETAPAS DO DESAFIO ===== */
+
+#sala-02 .puzzle-section {
+    position: relative;
+    margin-top: 32px;
+    padding: 28px;
+
+    border: 1px solid rgba(93, 159, 255, 0.16);
+    border-radius: 8px;
+
+    background: rgba(7, 15, 23, 0.65);
+}
+
+#sala-02 .section-label {
+    color: #75aaff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+#sala-02 .puzzle-section > p {
+    line-height: 1.7;
+}
+
+/* ===== OPÇÕES DE EXPRESSÃO ===== */
+
+#sala-02 .tautologia-opcoes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#sala-02 .tautologia-opcoes .logic-option {
+    min-height: 115px;
+    padding: 18px;
+
+    border: 1px solid #293d4c;
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(93, 159, 255, 0.07),
+            transparent
+        ),
+        #101d28;
+
+    transition: 0.2s ease;
+}
+
+#sala-02 .tautologia-opcoes .logic-option:hover {
+    border-color: #55f2c2;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(85, 242, 194, 0.08);
+}
+
+#sala-02 .tautologia-opcoes .logic-option.selecionada {
+    border-color: #55f2c2;
+
+    background: rgba(85, 242, 194, 0.09);
+
+    box-shadow:
+        0 0 18px rgba(85, 242, 194, 0.1),
+        inset 0 0 15px rgba(85, 242, 194, 0.04);
+}
+
+#sala-02 .option-letter {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border: 1px solid rgba(93, 159, 255, 0.4);
+    border-radius: 6px;
+
+    color: #75aaff;
+    background: rgba(93, 159, 255, 0.08);
+}
+
+#sala-02 .logic-option strong {
+    color: #eaf4f5;
+    font-size: 1.2rem;
+}
+
+#sala-02 .logic-option small {
+    display: block;
+    margin-top: 6px;
+    color: #81939e;
+}
+
+/* ===== EXPRESSÃO SELECIONADA ===== */
+
+#sala-02 .expression-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    margin: 24px 0;
+    padding: 25px;
+
+    border: 1px solid rgba(85, 242, 194, 0.25);
+    border-radius: 8px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(85, 242, 194, 0.08),
+            transparent 75%
+        ),
+        #08121a;
+}
+
+#sala-02 .expression-display span {
+    color: #81939e;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+}
+
+#sala-02 .expression-display strong {
+    color: #55f2c2;
+    font-size: clamp(1.8rem, 5vw, 2.7rem);
+    text-shadow: 0 0 20px rgba(85, 242, 194, 0.2);
+}
+
+/* ===== CONTROLE DE P ===== */
+
+#sala-02 .value-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    margin: 25px 0;
+    padding: 20px;
+
+    border: 1px solid #293d4c;
+    border-radius: 8px;
+
+    background: #111e29;
+}
+
+#sala-02 .field-label {
+    display: block;
+    margin-bottom: 9px;
+
+    color: #81939e;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+}
+
+#sala-02 #valor-p-grande {
+    color: #55f2c2;
+    font-size: 1.5rem;
+}
+
+#sala-02 .secondary-button {
+    border-color: #5d9fff;
+    color: #75aaff;
+    background: rgba(93, 159, 255, 0.07);
+}
+
+#sala-02 .secondary-button:hover {
+    background: rgba(93, 159, 255, 0.16);
+}
+
+/* ===== TABELA-VERDADE ===== */
+
+#sala-02 .table-wrapper {
+    overflow-x: auto;
+    margin: 22px 0;
+    border: 1px solid #293d4c;
+    border-radius: 8px;
+}
+
+#sala-02 .tabela-verdade {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0b151e;
+}
+
+#sala-02 .tabela-verdade th {
+    padding: 16px;
+
+    color: #75aaff;
+    background: #142433;
+
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+#sala-02 .tabela-verdade td {
+    padding: 20px;
+
+    border-top: 1px solid #293d4c;
+
+    color: #55f2c2;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+/* ===== PROGRESSO DOS TESTES ===== */
+
+#sala-02 .test-progress {
+    margin: 25px 0;
+    padding: 20px;
+
+    border: 1px solid #293d4c;
+    border-radius: 8px;
+
+    background: #101d28;
+}
+
+#sala-02 .progress-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#sala-02 .test-value {
+    padding: 13px;
+
+    border: 1px solid #344b59;
+    border-radius: 6px;
+
+    color: #81939e;
+    background: #0a141d;
+
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+#sala-02 .test-value.concluido,
+#sala-02 .test-value.testado {
+    border-color: #55f2c2;
+    color: #55f2c2;
+    background: rgba(85, 242, 194, 0.07);
+}
+
+/* ===== FEEDBACK E VALIDAÇÃO ===== */
+
+#sala-02 #feedback-tautologia,
+#sala-02 #feedback-senha {
+    margin: 18px 0;
+    line-height: 1.6;
+}
+
+#sala-02 .feedback.sucesso {
+    color: #55f2c2;
+}
+
+#sala-02 .feedback.erro {
+    color: #ff7777;
+}
+
+#sala-02 #validar-tautologia {
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 0 18px rgba(85, 242, 194, 0.08);
+}
+
+/* ===== PAINEL DE SENHA ===== */
+
+#sala-02 .success-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin: 20px 0;
+    padding: 20px;
+
+    border: 1px solid rgba(85, 242, 194, 0.35);
+    border-radius: 8px;
+
+    background: rgba(85, 242, 194, 0.07);
+}
+
+#sala-02 .success-icon {
+    display: grid;
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    border: 1px solid #55f2c2;
+    border-radius: 50%;
+
+    color: #55f2c2;
+    font-size: 1.3rem;
+}
+
+#sala-02 .success-banner strong {
+    color: #55f2c2;
+    letter-spacing: 0.08em;
+}
+
+#sala-02 .success-banner p {
+    margin: 6px 0 0;
+    color: #a5b7c1;
+}
+
+/* ===== FORMULÁRIO DE SENHA ===== */
+
+#sala-02 #form-senha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+#sala-02 #senha-digitada {
+    flex: 1;
+    min-width: 150px;
+
+    padding: 15px;
+
+    border: 1px solid #344b59;
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #07111a;
+    color: #55f2c2;
+
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.5em;
+    text-align: center;
+}
+
+#sala-02 #senha-digitada:focus {
+    border-color: #55f2c2;
+    box-shadow: 0 0 0 3px rgba(85, 242, 194, 0.1);
+}
+
+#sala-02 #verificar-senha {
+    flex-shrink: 0;
+}
+
+/* ===== MENSAGEM DO SISTEMA ===== */
+
+#sala-02 .message-panel {
+    max-width: 950px;
+    margin: 25px auto;
+
+    border-color: rgba(93, 159, 255, 0.25);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(93, 159, 255, 0.06),
+            transparent
+        ),
+        #0d1822;
+}
+
+#sala-02 .message-icon {
+    border-color: #5d9fff;
+    color: #75aaff;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 750px) {
+    #sala-02 .tautologia-opcoes {
+        grid-template-columns: 1fr;
+    }
+
+    #sala-02 .tautologia-opcoes .logic-option {
+        min-height: 75px;
+    }
+
+    #sala-02 .room-header {
+        padding: 17px;
+    }
+
+    #sala-02 .tautologia-panel::before {
+        margin: -22px -22px 25px;
+    }
+
+    #sala-02 .puzzle-section {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    #sala-02 .progress-options {
+        grid-template-columns: 1fr;
+    }
+
+    #sala-02 .value-control {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #sala-02 #form-senha {
+        flex-direction: column;
+    }
+
+    #sala-02 #verificar-senha {
+        width: 100%;
+    }
+}
+
+/* Respeita a preferência por movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    #sala-02 *,
+    #sala-02 *::before,
+    #sala-02 *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
