@@ -1352,7 +1352,13 @@ function verificarSenhaTautologia() {
     }
 
     estado.senhaTautologiaDigitada = true;
+
     serverDoor.classList.add("liberada");
+
+    serverDoor.querySelector(".texto-acesso").textContent =
+        "ACESSO LIBERADO";
+
+    serverDoor.querySelector(".door-lock").textContent = "🔓";
 
     feedbackSenha.textContent =
         "ACESSO AUTORIZADO! O segundo setor foi desbloqueado.";

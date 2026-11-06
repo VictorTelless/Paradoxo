@@ -2500,6 +2500,8 @@ p {
 .server-door .door-lock {
     font-size: 1.2rem;
 }
+
+/* PORTA DESTRAVADA */
 .server-door.liberada {
     border-color: #55f2c2;
 
@@ -2513,26 +2515,37 @@ p {
     box-shadow:
         inset 0 0 25px rgba(85, 242, 194, 0.25),
         0 0 18px rgba(85, 242, 194, 0.35);
+
+    animation: portaLiberada 1.5s ease-in-out infinite alternate;
 }
 
-.server-door.liberada {
-    border-color: #55f2c2;
-
-    background: linear-gradient(
-        90deg,
-        #102d2b,
-        #185044,
-        #102d2b
-    );
-
-    box-shadow:
-        inset 0 0 25px rgba(85, 242, 194, 0.25),
-        0 0 18px rgba(85, 242, 194, 0.35);
+.server-door.liberada .door-light {
+    background: #55f2c2;
+    box-shadow: 0 0 15px #55f2c2;
 }
 
 .server-door.liberada .texto-acesso {
     color: #55f2c2;
     text-shadow: 0 0 8px rgba(85, 242, 194, 0.7);
+}
+
+.server-door.liberada .door-lock {
+    color: #55f2c2;
+    transform: scale(1.15);
+}
+
+@keyframes portaLiberada {
+    from {
+        box-shadow:
+            inset 0 0 15px rgba(85, 242, 194, 0.15),
+            0 0 8px rgba(85, 242, 194, 0.2);
+    }
+
+    to {
+        box-shadow:
+            inset 0 0 30px rgba(85, 242, 194, 0.35),
+            0 0 25px rgba(85, 242, 194, 0.55);
+    }
 }
 /* Identificação da sala */
 
